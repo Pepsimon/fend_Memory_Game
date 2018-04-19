@@ -14,11 +14,13 @@ cards
 function initGame() {
   let deck = document.querySelector(".deck");
   for (card of cards) {
-    card.addEventListener("click", function() {
-      console.log("Clicked!");
-    })
+    card.addEventListener("click", displayCard);
     deck.appendChild(card);
   };
+}
+
+function displayCard() {
+  this.classList.add("open", "show");
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
