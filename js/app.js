@@ -3,8 +3,9 @@
  */
 
 const cards = shuffle([...document.querySelectorAll(".card")]);
+const deck = document.querySelector(".deck");
 
-let cardList = [];
+let cardArr = [];
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -13,12 +14,11 @@ let cardList = [];
  */
 
 function initGame() {
-  let deck = document.querySelector(".deck");
   for (card of cards) {
     card.addEventListener("click", displayCard);
     card.addEventListener("click", openCards);
     deck.appendChild(card);
-  };
+  }
 }
 
 function displayCard() {
@@ -26,8 +26,23 @@ function displayCard() {
 }
 
 function openCards() {
-  cardList.push(this);
-  console.log(cardList);
+  if (cardArr.length < 2) {
+    cardArr.push(this);
+    if (cardArr[0].isEqualNode(cardArr[1])) {
+      matched();
+    }
+  } else {
+    cardArr = [];
+    cardArr.push(this);
+  }
+  console.log(cardArr);
+}
+
+function matched() {
+  for (card of cardArr) {
+    card.classList.add("match");
+    cardArr = [];
+  }
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
