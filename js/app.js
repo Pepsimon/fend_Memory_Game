@@ -3,7 +3,8 @@
  */
 
 const cards = shuffle([...document.querySelectorAll(".card")]);
-cards
+
+let cardList = [];
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -15,12 +16,18 @@ function initGame() {
   let deck = document.querySelector(".deck");
   for (card of cards) {
     card.addEventListener("click", displayCard);
+    card.addEventListener("click", openCards);
     deck.appendChild(card);
   };
 }
 
 function displayCard() {
   this.classList.add("open", "show");
+}
+
+function openCards() {
+  cardList.push(this);
+  console.log(cardList);
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
