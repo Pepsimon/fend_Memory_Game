@@ -10,6 +10,9 @@ let matchedCards = [];
 
 const restartBtn = document.querySelector(".restart");
 restartBtn.addEventListener("click", initGame);
+
+let moves = document.querySelector(".moves");
+let count = Number(moves.innerHTML);
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -24,6 +27,7 @@ function initGame() {
     card.classList.remove("open", "show", "match");
     deck.appendChild(card);
   }
+  moves.innerHTML = 0;
 }
 
 function displayCard() {
@@ -35,8 +39,10 @@ function openCards() {
   if (cardArr.length === 2) {
     if (cardArr[0].isEqualNode(cardArr[1])) {
       matched();
+      moves.innerHTML ++;
     } else {
       setTimeout(unMatched, 1000);
+      moves.innerHTML ++;
     }
   }
   console.log(cardArr);
@@ -64,6 +70,10 @@ function finish() {
     alert("YOU WON!");
   }
 }
+
+// function rating() {
+//   if (number())
+// }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
