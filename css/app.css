@@ -98,7 +98,15 @@ h1 {
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
-    color: #e6e600;
+    color: #e6e600;  
+}
+
+.star-one {
+  color: #e6e600;
+}
+
+.star-two {
+  color: #e6e600;
 }
 
 .score-panel .stars li {

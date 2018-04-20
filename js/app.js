@@ -1,6 +1,4 @@
-/*
- * Create a list that holds all of your cards
- */
+
 
 const cards = shuffle([...document.querySelectorAll(".card")]);
 const deck = document.querySelector(".deck");
@@ -12,13 +10,9 @@ const restartBtn = document.querySelector(".restart");
 restartBtn.addEventListener("click", initGame);
 
 let moves = document.querySelector(".moves");
-let count = Number(moves.innerHTML);
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+let stars = document.querySelector(".stars");
+let starOne = document.querySelector(".star-one");
+let starTwo = document.querySelector(".star-two");
 
 function initGame() {
   for (card of cards) {
@@ -40,9 +34,11 @@ function openCards() {
     if (cardArr[0].isEqualNode(cardArr[1])) {
       matched();
       moves.innerHTML ++;
+      rating();
     } else {
       setTimeout(unMatched, 1000);
       moves.innerHTML ++;
+      rating();
     }
   }
   console.log(cardArr);
@@ -71,9 +67,15 @@ function finish() {
   }
 }
 
-// function rating() {
-//   if (number())
-// }
+function rating() {
+  let movesCount = Number(moves.innerHTML);
+  if (movesCount > 9) {
+    starOne.style.color = "#000";
+  }
+  if (movesCount > 19) {
+    starTwo.style.color = "#000";
+  }
+}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
