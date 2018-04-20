@@ -7,6 +7,9 @@ const deck = document.querySelector(".deck");
 
 let cardArr = [];
 let matchedCards = [];
+
+const restartBtn = document.querySelector(".restart");
+restartBtn.addEventListener("click", initGame);
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -18,6 +21,7 @@ function initGame() {
   for (card of cards) {
     card.addEventListener("click", displayCard);
     card.addEventListener("click", openCards);
+    card.classList.remove("open", "show", "match");
     deck.appendChild(card);
   }
 }
