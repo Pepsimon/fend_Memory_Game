@@ -26,14 +26,13 @@ function displayCard() {
 }
 
 function openCards() {
-  if (cardArr.length < 2) {
-    cardArr.push(this);
+  cardArr.push(this);
+  if (cardArr.length === 2) {
     if (cardArr[0].isEqualNode(cardArr[1])) {
       matched();
+    } else {
+      setTimeout(unMatched, 1000);
     }
-  } else {
-    cardArr = [];
-    cardArr.push(this);
   }
   console.log(cardArr);
 }
@@ -43,6 +42,14 @@ function matched() {
     card.classList.add("match");
     cardArr = [];
   }
+}
+
+function unMatched () {
+  for (card of cardArr) {
+    card.classList.toggle("open");
+    card.classList.toggle("show");
+  }
+  cardArr = [];
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
