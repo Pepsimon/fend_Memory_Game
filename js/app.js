@@ -1,5 +1,3 @@
-
-
 const cards = shuffle([...document.querySelectorAll(".card")]);
 const deck = document.querySelector(".deck");
 
@@ -10,7 +8,7 @@ const restartBtn = document.querySelector(".restart");
 restartBtn.addEventListener("click", initGame);
 restartBtn.addEventListener("click", restartTimer);
 
-let moves = document.querySelector(".moves");
+let moves = document.querySelectorAll(".moves");
 let stars = document.querySelector(".stars");
 let starOne = document.querySelector(".star-one");
 let starTwo = document.querySelector(".star-two");
@@ -18,6 +16,11 @@ let starTwo = document.querySelector(".star-two");
 let timerEl = document.querySelector(".timer");
 let seconds = 0;
 let minutes = 0;
+
+const modal = document.querySelector(".modal");
+let playAgain = document.querySelector(".play-again");
+playAgain.addEventListener("click", initGame);
+playAgain.addEventListener("click", restartTimer);
 
 function restartTimer() {
   let timerId = setInterval(timer, 1000);
@@ -33,7 +36,7 @@ function initGame() {
     card.classList.remove("open", "show", "match");
     deck.appendChild(card);
   }
-  moves.innerHTML = 0;
+  moves[0].innerHTML = 0;
 }
 
 function displayCard() {
@@ -45,11 +48,11 @@ function openCards() {
   if (cardArr.length === 2) {
     if (cardArr[0].isEqualNode(cardArr[1])) {
       matched();
-      moves.innerHTML ++;
+      moves[0].innerHTML ++;
       rating();
     } else {
       setTimeout(unMatched, 1000);
-      moves.innerHTML ++;
+      moves[0].innerHTML ++;
       rating();
     }
   }
@@ -75,12 +78,13 @@ function unMatched () {
 
 function finish() {
   if (matchedCards.length === 16 ) {
-    alert("YOU WON!");
+    modal.classList.add("show-modal");
+    moves[1].innerHTML = moves[0].innerHTML;
   }
 }
 
 function rating() {
-  let movesCount = Number(moves.innerHTML);
+  let movesCount = Number(moves[0].innerHTML);
   if (movesCount > 9) {
     starOne.style.color = "#000";
   }
@@ -97,6 +101,10 @@ function timer() {
   }
   timerEl.innerHTML = `${minutes}min : ${seconds}sec`;
 }
+
+function toggleModal() {
+     modal.classList.toggle("show-modal");
+ }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
