@@ -8,6 +8,7 @@ let matchedCards = [];
 
 const restartBtn = document.querySelector(".restart");
 restartBtn.addEventListener("click", initGame);
+restartBtn.addEventListener("click", restartTimer);
 
 let moves = document.querySelector(".moves");
 let stars = document.querySelector(".stars");
@@ -15,8 +16,15 @@ let starOne = document.querySelector(".star-one");
 let starTwo = document.querySelector(".star-two");
 
 let timerEl = document.querySelector(".timer");
-let seconds = 00;
-let minutes = 00;
+let seconds = 0;
+let minutes = 0;
+
+function restartTimer() {
+  let timerId = setInterval(timer, 1000);
+  seconds = -1;
+  minutes = 0;
+  clearInterval(timerId);
+}
 
 function initGame() {
   for (card of cards) {
@@ -26,7 +34,6 @@ function initGame() {
     deck.appendChild(card);
   }
   moves.innerHTML = 0;
-  setInterval(timer, 1000);
 }
 
 function displayCard() {
@@ -107,6 +114,7 @@ function shuffle(array) {
 }
 
 initGame();
+setInterval(timer, 1000);
 
 /*
  * set up the event listener for a card. If a card is clicked:
