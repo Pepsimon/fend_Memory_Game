@@ -6,6 +6,7 @@ const cards = shuffle([...document.querySelectorAll(".card")]);
 const deck = document.querySelector(".deck");
 
 let cardArr = [];
+let matchedCards = [];
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -40,8 +41,10 @@ function openCards() {
 function matched() {
   for (card of cardArr) {
     card.classList.add("match");
+    matchedCards.push(card);
     cardArr = [];
   }
+  setTimeout(finish, 1000);
 }
 
 function unMatched () {
@@ -50,6 +53,12 @@ function unMatched () {
     card.classList.toggle("show");
   }
   cardArr = [];
+}
+
+function finish() {
+  if (matchedCards.length === 16 ) {
+    alert("YOU WON!");
+  }
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
