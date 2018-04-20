@@ -14,6 +14,10 @@ let stars = document.querySelector(".stars");
 let starOne = document.querySelector(".star-one");
 let starTwo = document.querySelector(".star-two");
 
+let timerEl = document.querySelector(".timer");
+let seconds = 00;
+let minutes = 00;
+
 function initGame() {
   for (card of cards) {
     card.addEventListener("click", displayCard);
@@ -22,6 +26,7 @@ function initGame() {
     deck.appendChild(card);
   }
   moves.innerHTML = 0;
+  setInterval(timer, 1000);
 }
 
 function displayCard() {
@@ -75,6 +80,15 @@ function rating() {
   if (movesCount > 19) {
     starTwo.style.color = "#000";
   }
+}
+
+function timer() {
+  seconds ++
+  if (seconds === 60) {
+    seconds = 0;
+    minutes++;
+  }
+  timerEl.innerHTML = `${minutes}min : ${seconds}sec`;
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
