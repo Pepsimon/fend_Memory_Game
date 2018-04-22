@@ -24,10 +24,10 @@ playAgain.addEventListener("click", initGame);
 playAgain.addEventListener("click", restartTimer);
 
 function restartTimer() {
-    seconds = -1;
-    minutes = 0;
-    clearInterval(runTimer);
-    runTimer = setInterval(timer, 1000);
+  seconds = -1;
+  minutes = 0;
+  clearInterval(runTimer);
+  runTimer = setInterval(timer, 1000);
 }
 
 function initGame() {
@@ -49,11 +49,11 @@ function openCards() {
   if (cardArr.length === 2) {
     if (cardArr[0].isEqualNode(cardArr[1])) {
       matched();
-      moves[0].innerHTML ++;
+      moves[0].innerHTML++;
       rating();
     } else {
       setTimeout(unMatched, 1000);
-      moves[0].innerHTML ++;
+      moves[0].innerHTML++;
       rating();
     }
   }
@@ -69,7 +69,7 @@ function matched() {
   setTimeout(finish, 1000);
 }
 
-function unMatched () {
+function unMatched() {
   for (card of cardArr) {
     card.classList.toggle("open");
     card.classList.toggle("show");
@@ -78,7 +78,7 @@ function unMatched () {
 }
 
 function finish() {
-  if (matchedCards.length === 16 ) {
+  if (matchedCards.length === 16) {
     clearInterval(timerId);
     modal.classList.add("show-modal");
     moves[1].innerHTML = moves[0].innerHTML;
@@ -96,7 +96,7 @@ function rating() {
 }
 
 function timer() {
-  seconds ++
+  seconds++
   if (seconds === 60) {
     seconds = 0;
     minutes++;
@@ -105,22 +105,23 @@ function timer() {
 }
 
 function toggleModal() {
-     modal.classList.toggle("show-modal");
- }
+  modal.classList.toggle("show-modal");
+}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    let currentIndex = array.length, temporaryValue, randomIndex;
+  let currentIndex = array.length,
+    temporaryValue, randomIndex;
 
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
 
-    return array;
+  return array;
 }
 
 initGame();
