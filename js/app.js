@@ -79,7 +79,7 @@ function unMatched() {
 
 function finish() {
   if (matchedCards.length === 16) {
-    clearInterval(timerId);
+    clearInterval(runTimer);
     modal.classList.add("show-modal");
     moves[1].innerHTML = moves[0].innerHTML;
   }
