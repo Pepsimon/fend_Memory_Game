@@ -13,7 +13,7 @@ let stars = document.querySelector(".stars");
 let starOne = document.querySelector(".star-one");
 let starTwo = document.querySelector(".star-two");
 
-let timerEl = document.querySelector(".timer");
+let timerEl = document.querySelectorAll(".timer");
 let seconds = 0;
 let minutes = 0;
 let runTimer = setInterval(timer, 1000);
@@ -82,6 +82,7 @@ function finish() {
     clearInterval(runTimer);
     modal.classList.add("show-modal");
     moves[1].innerHTML = moves[0].innerHTML;
+    timerEl[2].innerHTML = `${minutes}min : ${seconds}sec`;
   }
 }
 
@@ -101,7 +102,7 @@ function timer() {
     seconds = 0;
     minutes++;
   }
-  timerEl.innerHTML = `${minutes}min : ${seconds}sec`;
+  timerEl[0].innerHTML = `${minutes}min : ${seconds}sec`;
 }
 
 function toggleModal() {
