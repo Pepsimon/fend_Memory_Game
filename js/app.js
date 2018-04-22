@@ -16,6 +16,7 @@ let starTwo = document.querySelector(".star-two");
 let timerEl = document.querySelector(".timer");
 let seconds = 0;
 let minutes = 0;
+let runTimer = setInterval(timer, 1000);
 
 const modal = document.querySelector(".modal");
 let playAgain = document.querySelector(".play-again");
@@ -23,10 +24,10 @@ playAgain.addEventListener("click", initGame);
 playAgain.addEventListener("click", restartTimer);
 
 function restartTimer() {
-  let timerId = setInterval(timer, 1000);
-  seconds = -1;
-  minutes = 0;
-  clearInterval(timerId);
+    seconds = -1;
+    minutes = 0;
+    clearInterval(runTimer);
+    runTimer = setInterval(timer, 1000);
 }
 
 function initGame() {
@@ -123,4 +124,3 @@ function shuffle(array) {
 }
 
 initGame();
-setInterval(timer, 1000);
