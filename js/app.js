@@ -22,13 +22,6 @@ let playAgain = document.querySelector(".play-again");
 let modalOn = false;
 playAgain.addEventListener("click", initGame);
 
-function restartTimer() {
-  seconds = -1;
-  minutes = 0;
-  clearInterval(runTimer);
-  runTimer = setInterval(timer, 1000);
-}
-
 function initGame() {
   for (card of cards) {
     card.addEventListener("click", displayCard);
@@ -121,6 +114,13 @@ function timer() {
     minutes++;
   }
   timerEl[0].innerHTML = `${minutes}min : ${seconds}sec`;
+}
+
+function restartTimer() {
+  seconds = -1;
+  minutes = 0;
+  clearInterval(runTimer);
+  runTimer = setInterval(timer, 1000);
 }
 
 function toggleModal() {
