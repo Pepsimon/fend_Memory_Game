@@ -64,7 +64,6 @@ function openCards() {
       rating();
     }
   }
-  console.log(cardArr);
 }
 
 function matched() {
