@@ -40,6 +40,16 @@ function initGame() {
     modal.classList.toggle("show-modal");
     modalOn = false;
   }
+  for (star of starOne) {
+    if (star.style.color = "#000"){
+      star.style.color = "#e6e600";
+    }
+  }
+  for (star of starTwo) {
+    if (star.style.color = "#000"){
+      star.style.color = "#e6e600";
+    }
+  }
   moves[0].innerHTML = 0;
   restartTimer();
 }
