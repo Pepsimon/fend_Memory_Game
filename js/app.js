@@ -6,7 +6,6 @@ let matchedCards = [];
 
 const restartBtn = document.querySelector(".restart");
 restartBtn.addEventListener("click", initGame);
-restartBtn.addEventListener("click", restartTimer);
 
 let moves = document.querySelectorAll(".moves");
 let stars = document.querySelector(".stars");
@@ -22,7 +21,6 @@ const modal = document.querySelector(".modal");
 let playAgain = document.querySelector(".play-again");
 let modalOn = false;
 playAgain.addEventListener("click", initGame);
-playAgain.addEventListener("click", restartTimer);
 
 function restartTimer() {
   seconds = -1;
@@ -43,6 +41,7 @@ function initGame() {
     modalOn = false;
   }
   moves[0].innerHTML = 0;
+  restartTimer();
 }
 
 function displayCard() {
