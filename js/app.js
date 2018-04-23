@@ -20,7 +20,10 @@ let starTwo = document.querySelectorAll(".star-two");
 let timerEl = document.querySelectorAll(".timer");
 let seconds = 0;
 let minutes = 0;
-let runTimer = setInterval(timer, 1000);
+let runTimer;
+// Flag for starting timer on first "click"
+let clicked = false;
+let timerText =
 
 // Varibles for the modal and the play again button
 const modal = document.querySelector(".modal");
@@ -58,6 +61,7 @@ function initGame() {
   }
   moves[0].innerHTML = 0;
   cardArr = [];
+  clicked = false;
   restartTimer();
 }
 
@@ -85,6 +89,10 @@ function openCards() {
       moves[0].innerHTML++;
       rating();
     }
+  }
+  if (clicked === false) {
+    runTimer = setInterval(timer, 1000);
+    clicked = true;
   }
 }
 
@@ -158,10 +166,10 @@ function timer() {
  * @description Restarts the timer
  */
 function restartTimer() {
-  seconds = -1;
+  seconds = 0;
   minutes = 0;
   clearInterval(runTimer);
-  runTimer = setInterval(timer, 1000);
+  timerEl[0].innerHTML = `${minutes}min : ${seconds}sec`;
 }
 
 /**
