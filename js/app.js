@@ -1,5 +1,5 @@
 // Variables for holding cards (shuffled and spread into an array) and deck
-const cards = shuffle([...document.querySelectorAll(".card")]);
+const cards = [...document.querySelectorAll(".card")];
 const deck = document.querySelector(".deck");
 
 // Variables for holding cards that have been opened and cards that matches
@@ -36,7 +36,7 @@ playAgain.addEventListener("click", initGame);
  * Resets the moves and restarts the timer
  */
 function initGame() {
-  for (card of cards) {
+  for (card of shuffle(cards)) {
     card.addEventListener("click", displayCard);
     card.addEventListener("click", openCards);
     card.classList.remove("open", "show", "match");
