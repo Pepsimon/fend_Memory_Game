@@ -23,7 +23,6 @@ let minutes = 0;
 let runTimer;
 // Flag for starting timer on first "click"
 let clicked = false;
-let timerText =
 
 // Varibles for the modal and the play again button
 const modal = document.querySelector(".modal");
