@@ -1,27 +1,40 @@
+// Variables for holding cards (shuffled and spread into an array) and deck
 const cards = shuffle([...document.querySelectorAll(".card")]);
 const deck = document.querySelector(".deck");
 
+// Variables for holding cards that have been opened and cards that matches
 let cardArr = [];
 let matchedCards = [];
 
+// Variable and eventListener for the restart button
 const restartBtn = document.querySelector(".restart");
 restartBtn.addEventListener("click", initGame);
 
+// Score-panel varibles
 let moves = document.querySelectorAll(".moves");
 let stars = document.querySelector(".stars");
 let starOne = document.querySelectorAll(".star-one");
 let starTwo = document.querySelectorAll(".star-two");
 
+// Variables for the timer
 let timerEl = document.querySelectorAll(".timer");
 let seconds = 0;
 let minutes = 0;
 let runTimer = setInterval(timer, 1000);
 
+// Varibles for the modal and the play again button
 const modal = document.querySelector(".modal");
 let playAgain = document.querySelector(".play-again");
 let modalOn = false;
 playAgain.addEventListener("click", initGame);
 
+/**
+ * @description Initial function to run when the script loads
+ * Will set eventListeners on the cards then append the shuffled cards to the deck
+ * Will check if the modal is up, and if so toggle it
+ * Will check the stars for color changes and set them back to normal
+ * Resets the moves and restarts the timer
+ */
 function initGame() {
   for (card of cards) {
     card.addEventListener("click", displayCard);
@@ -47,10 +60,18 @@ function initGame() {
   restartTimer();
 }
 
+/**
+ * @description Adds classes for displaying the cards
+ */
 function displayCard() {
   this.classList.add("open", "show");
 }
 
+/**
+ * @description Pushes open cards into an array and checks to see if they match or not
+ * Runs the matched function if matched or the unmatched funtion otherwise
+ * Increments the move counter
+ */
 function openCards() {
   cardArr.push(this);
   if (cardArr.length === 2) {
@@ -66,6 +87,11 @@ function openCards() {
   }
 }
 
+/**
+ * @description Adds a match class to the matched cards
+ * Pushes matched cards into an array
+ * Resets the card array
+ */
 function matched() {
   for (card of cardArr) {
     card.classList.add("match");
@@ -75,6 +101,9 @@ function matched() {
   setTimeout(finish, 1000);
 }
 
+/**
+ * @description Removes classes showing cards if they dont match
+ */
 function unMatched() {
   for (card of cardArr) {
     card.classList.toggle("open");
@@ -83,6 +112,9 @@ function unMatched() {
   cardArr = [];
 }
 
+/**
+ * @description Will stop timer and add html to the modal and show it to the player when matchedCards array has all the cards
+ */
 function finish() {
   if (matchedCards.length === 16) {
     clearInterval(runTimer);
@@ -92,6 +124,9 @@ function finish() {
   }
 }
 
+/**
+ * @description Change the color of the stars as the moves counter goes above a set number
+ */
 function rating() {
   let movesCount = Number(moves[0].innerHTML);
   if (movesCount > 9) {
@@ -106,6 +141,9 @@ function rating() {
   }
 }
 
+/**
+ * @description Simple timer counting seconds and minutes
+ */
 function timer() {
   seconds++
   if (seconds === 60) {
@@ -115,6 +153,9 @@ function timer() {
   timerEl[0].innerHTML = `${minutes}min : ${seconds}sec`;
 }
 
+/**
+ * @description Restarts the timer
+ */
 function restartTimer() {
   seconds = -1;
   minutes = 0;
@@ -122,6 +163,9 @@ function restartTimer() {
   runTimer = setInterval(timer, 1000);
 }
 
+/**
+ * @description Toggles showing the modal
+ */
 function toggleModal() {
   modal.classList.toggle("show-modal");
   modalOn = true;
