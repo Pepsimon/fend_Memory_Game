@@ -57,6 +57,7 @@ function initGame() {
     }
   }
   moves[0].innerHTML = 0;
+  cardArr = [];
   restartTimer();
 }
 
