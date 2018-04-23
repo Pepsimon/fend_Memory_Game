@@ -82,7 +82,7 @@ function finish() {
     clearInterval(runTimer);
     modal.classList.add("show-modal");
     moves[1].innerHTML = moves[0].innerHTML;
-    timerEl[2].innerHTML = `${minutes}min : ${seconds}sec`;
+    timerEl[1].innerHTML = `${minutes}min : ${seconds}sec`;
   }
 }
 

@@ -117,6 +117,10 @@ h1 {
   cursor: pointer;
 }
 
+/*
+ * Styles for the Modal
+ */
+
 .modal {
   position: fixed;
   left: 0;
@@ -148,12 +152,29 @@ h1 {
   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 
+.stars-ul {
+  width: 185px;
+  margin: auto;
+  color: #e6e600;
+}
+
+.stars-ul li {
+  list-style: none;
+  display: inline-block;
+}
+
+.stars {
+  padding: 0;
+  margin: auto;
+}
+
 .modal-txt {
   text-align: center;
 }
 
 .play-again {
   width: 85px;
+  margin: auto;
 }
 
 .play-again:hover {
