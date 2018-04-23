@@ -10,8 +10,8 @@ restartBtn.addEventListener("click", restartTimer);
 
 let moves = document.querySelectorAll(".moves");
 let stars = document.querySelector(".stars");
-let starOne = document.querySelector(".star-one");
-let starTwo = document.querySelector(".star-two");
+let starOne = document.querySelectorAll(".star-one");
+let starTwo = document.querySelectorAll(".star-two");
 
 let timerEl = document.querySelectorAll(".timer");
 let seconds = 0;
@@ -89,10 +89,14 @@ function finish() {
 function rating() {
   let movesCount = Number(moves[0].innerHTML);
   if (movesCount > 9) {
-    starOne.style.color = "#000";
+    for (star of starOne) {
+      star.style.color = "#000";
+    }
   }
   if (movesCount > 19) {
-    starTwo.style.color = "#000";
+    for (star of starTwo) {
+      star.style.color = "#000";
+    }
   }
 }
 
