@@ -20,6 +20,7 @@ let runTimer = setInterval(timer, 1000);
 
 const modal = document.querySelector(".modal");
 let playAgain = document.querySelector(".play-again");
+let modalOn = false;
 playAgain.addEventListener("click", initGame);
 playAgain.addEventListener("click", restartTimer);
 
@@ -36,6 +37,10 @@ function initGame() {
     card.addEventListener("click", openCards);
     card.classList.remove("open", "show", "match");
     deck.appendChild(card);
+  }
+  if (modalOn) {
+    modal.classList.toggle("show-modal");
+    modalOn = false;
   }
   moves[0].innerHTML = 0;
 }
@@ -80,7 +85,7 @@ function unMatched() {
 function finish() {
   if (matchedCards.length === 16) {
     clearInterval(runTimer);
-    modal.classList.add("show-modal");
+    toggleModal();
     moves[1].innerHTML = moves[0].innerHTML;
     timerEl[1].innerHTML = `${minutes}min : ${seconds}sec`;
   }
@@ -111,6 +116,7 @@ function timer() {
 
 function toggleModal() {
   modal.classList.toggle("show-modal");
+  modalOn = true;
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
