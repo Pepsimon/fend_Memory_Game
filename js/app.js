@@ -30,6 +30,7 @@ let playAgain = document.querySelector(".play-again");
 let modalOn = false;
 playAgain.addEventListener("click", initGame);
 
+// Variable for the body element, used for stopping pointer-events
 let body = document.querySelector("body");
 
 /**
