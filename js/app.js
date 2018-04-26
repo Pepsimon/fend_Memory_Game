@@ -30,6 +30,8 @@ let playAgain = document.querySelector(".play-again");
 let modalOn = false;
 playAgain.addEventListener("click", initGame);
 
+let body = document.querySelector("body");
+
 /**
  * @description Initial function to run when the script loads
  * Will set eventListeners on the cards then append the shuffled cards to the deck
@@ -79,6 +81,7 @@ function displayCard() {
 function openCards() {
   cardArr.push(this);
   if (cardArr.length === 2) {
+    body.style["pointer-events"] = "none";
     if (cardArr[0].isEqualNode(cardArr[1])) {
       matched();
       moves[0].innerHTML++;
@@ -106,6 +109,7 @@ function matched() {
     matchedCards.push(card);
     cardArr = [];
   }
+  body.style["pointer-events"] = "all";
   setTimeout(finish, 1000);
 }
 
@@ -117,6 +121,7 @@ function unMatched() {
     card.classList.toggle("open");
     card.classList.toggle("show");
   }
+  body.style["pointer-events"] = "all";
   cardArr = [];
 }
 
