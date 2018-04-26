@@ -134,6 +134,7 @@ function finish() {
     toggleModal();
     moves[1].innerHTML = moves[0].innerHTML;
     timerEl[1].innerHTML = `${minutes}min : ${seconds}sec`;
+    matchedCards = [];
   }
 }
 

@@ -3,7 +3,7 @@
 ## Installing
 
 1. Clone or download the project into your local environment.
-2. Open the index html in a browser or start a local server and navigate to the project files.
+2. Open the index.html in a browser or start a local server and navigate to the project files.
 3. Enjoy! :)
 
 ## Description
